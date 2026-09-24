@@ -1,26 +1,29 @@
-# Clínica Unicauca Salud — Taller parte 2
+# Clínica Unicauca
 
-Proyecto Angular dividido en bloques (cada uno con HTML, CSS y TypeScript):
+Aplicación web desarrollada con **Angular 22** para la gestión de servicios de una clínica. 
+Permite a los usuarios explorar médicos por especialidad, registrarse como pacientes y 
+agendar citas médicas a través de una interfaz moderna y responsiva.
 
-- `src/app/componentes/encabezado`
-- `src/app/componentes/barra-navegacion`
-- `src/app/componentes/carrusel` (sección 1)
-- `src/app/componentes/medicos-especialidad` (sección 2: sidebar, descripción y médicos)
-- `src/app/componentes/registro` (sección 3: validación al perder el foco y al registrar)
-- `src/app/componentes/footer`
+## Funcionalidades principales
+- 🏥 Visualización de médicos organizados por especialidad
+- 📅 Módulo de agendamiento de citas (modal de reserva)
+- 👤 Registro de pacientes
+- 🖼️ Carrusel informativo y sección de productos/servicios
+- 🧭 Barra de navegación y footer institucional
 
-La primera versión HTML + CSS + Bootstrap está en `../version-html`.
+## Tecnologías utilizadas
+- **Angular** ^22.1.0
+- **Bootstrap** 5.3 + Bootstrap Icons
+- **TypeScript** ~6.0
+- **RxJS**
 
-## Cómo ejecutar
+## Estructura del proyecto
+- `componentes/` — componentes reutilizables (navbar, carrusel, footer, modal de citas, etc.)
+- `modelos/` — interfaces de datos (Cita, Médico, Paciente, Especialidad)
+- `servicios/` — servicios para lógica de citas, médicos, pacientes y validaciones
 
+## Instalación y ejecución
 ```bash
-cd clinica-angular
 npm install
 ng serve
 ```
-
-Abra http://localhost:4200/
-
-## Entrega
-
-Comprima el trabajo como `LIS_L4_apellidosNombres.rar` e incluya `clinica-angular` (sin `node_modules`) y `version-html`.
