@@ -1,0 +1,68 @@
+.carousel-contenedor {
+  width: 100%;
+}
+
+.carousel-img-wrap {
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(95deg, rgba(16, 24, 40, 0.78) 8%, rgba(16, 24, 40, 0.16) 72%);
+}
+
+.carousel-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+}
+
+.carousel-caption {
+  left: 7%;
+  right: auto;
+  bottom: 16%;
+  text-align: left;
+  max-width: 540px;
+  background: rgba(16, 24, 40, 0.55);
+  border: 1px solid rgba(255, 107, 74, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 1.5rem 1.7rem;
+  box-shadow: 0 18px 36px rgba(16, 24, 40, 0.28);
+}
+
+.carousel-caption h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.65rem, 3vw, 2.45rem);
+}
+
+.badge-promo {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 8px;
+  background: #ff6b4a;
+  color: #101828;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 575.98px) {
+  .carousel-img-wrap {
+    height: 300px;
+  }
+
+  .carousel-caption {
+    left: 4%;
+    right: 4%;
+    bottom: 12%;
+    max-width: none;
+  }
+}

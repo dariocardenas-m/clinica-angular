@@ -1,0 +1,114 @@
+@if (visible) {
+  <div class="modal-fondo" (click)="cerrarModal()">
+    <div class="modal-dialog modal-lg" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5">Agendar cita</h2>
+          <button type="button" class="btn-close" aria-label="Cerrar" (click)="cerrarModal()"></button>
+        </div>
+        <div class="modal-body">
+          <p class="form-text mb-3">
+            Primero cree su usuario en Registro. Luego elija fecha, profesional y si asiste al campus o se conecta en línea.
+          </p>
+          <form novalidate (submit)="agregarCita($event)">
+            <div class="mb-3">
+              <label class="form-label" for="fecha">Fecha</label>
+              <input type="date" class="form-control" id="fecha" name="fecha" [class.is-invalid]="!!errores.fecha" [(ngModel)]="formulario.fecha" (blur)="validarCampo('fecha')" />
+              <div class="invalid-feedback d-block">{{ errores.fecha }}</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="horaInicio">Hora inicio</label>
+              <input type="time" class="form-control" id="horaInicio" name="horaInicio" [class.is-invalid]="!!errores.horaInicio" [(ngModel)]="formulario.horaInicio" (blur)="validarCampo('horaInicio')" />
+              <div class="invalid-feedback d-block">{{ errores.horaInicio }}</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="horaFin">Hora fin</label>
+              <input type="time" class="form-control" id="horaFin" name="horaFin" [class.is-invalid]="!!errores.horaFin" [(ngModel)]="formulario.horaFin" (blur)="validarCampo('horaFin')" />
+              <div class="invalid-feedback d-block">{{ errores.horaFin }}</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="medicoSelect">Médico</label>
+              <select class="form-select" id="medicoSelect" name="medicoSelect" [class.is-invalid]="!!errores.medicoId" [(ngModel)]="formulario.medicoId" (blur)="validarCampo('medicoId')">
+                <option [ngValue]="null" disabled>Seleccione un médico</option>
+                @for (medico of medicos; track medico.id) {
+                  <option [ngValue]="medico.id">{{ medico.nombres }} {{ medico.apellidos }} ({{ medico.especialidad }})</option>
+                }
+              </select>
+              <div class="invalid-feedback d-block">{{ errores.medicoId }}</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="pacienteSelect">Usuario</label>
+              <select class="form-select" id="pacienteSelect" name="pacienteSelect" [class.is-invalid]="!!errores.pacienteId" [(ngModel)]="formulario.pacienteId" (blur)="validarCampo('pacienteId')">
+                <option [ngValue]="null" disabled>Seleccione un usuario registrado</option>
+                @for (paciente of pacientes; track paciente.id) {
+                  <option [ngValue]="paciente.id">{{ paciente.nombres }} {{ paciente.apellidos }}</option>
+                }
+              </select>
+              <div class="invalid-feedback d-block">{{ errores.pacienteId }}</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="motivoCita">Motivo de la cita</label>
+              <input type="text" class="form-control" id="motivoCita" name="motivoCita" placeholder="Máximo 20 caracteres" [class.is-invalid]="!!errores.motivo" [(ngModel)]="formulario.motivo" (blur)="validarCampo('motivo')" />
+              <div class="form-text">Máximo 20 caracteres.</div>
+              <div class="invalid-feedback d-block">{{ errores.motivo }}</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="correoConfirmacion">Correo de confirmación</label>
+              <input type="email" class="form-control" id="correoConfirmacion" name="correoConfirmacion" placeholder="ejemplo@correo.com" [class.is-invalid]="!!errores.correoConfirmacion" [(ngModel)]="formulario.correoConfirmacion" (blur)="validarCampo('correoConfirmacion')" />
+              <div class="invalid-feedback d-block">{{ errores.correoConfirmacion }}</div>
+            </div>
+            <fieldset class="mb-3">
+              <legend class="form-label">Modalidad</legend>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="modalidadPresencial" name="modalidadCita" value="Presencial" [(ngModel)]="formulario.modalidad" (blur)="validarCampo('modalidad')" />
+                <label class="form-check-label" for="modalidadPresencial">Presencial</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="modalidadVirtual" name="modalidadCita" value="Virtual" [(ngModel)]="formulario.modalidad" (blur)="validarCampo('modalidad')" />
+                <label class="form-check-label" for="modalidadVirtual">Virtual</label>
+              </div>
+              <div class="invalid-feedback d-block">{{ errores.modalidad }}</div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Agregar cita</button>
+          </form>
+
+          @if (citas.length > 0) {
+            <div class="mt-4">
+              <h3 class="h6">Citas registradas</h3>
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Inicio</th>
+                      <th>Fin</th>
+                      <th>Médico</th>
+                      <th>Usuario</th>
+                      <th>Motivo</th>
+                      <th>Modalidad</th>
+                      <th>Correo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (cita of citas; track cita.id) {
+                      <tr>
+                        <td>{{ cita.fecha }}</td>
+                        <td>{{ cita.horaInicio }}</td>
+                        <td>{{ cita.horaFin }}</td>
+                        <td>{{ cita.medico }}</td>
+                        <td>{{ cita.paciente }}</td>
+                        <td>{{ cita.motivo }}</td>
+                        <td>{{ cita.modalidad }}</td>
+                        <td>{{ cita.correoConfirmacion }}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

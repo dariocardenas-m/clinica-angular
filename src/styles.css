@@ -1,0 +1,50 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+  --verde-profundo: #152238;
+  --verde: #3d5a80;
+  --verde-suave: #e8eef6;
+  --dorado: #ff6b4a;
+  --crema: #eef2f7;
+  --papel: #f8fafc;
+  --texto: #1c2434;
+  --sombra: 0 12px 28px rgba(21, 34, 56, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Manrope", "Segoe UI", Arial, sans-serif;
+  color: var(--texto);
+  background:
+    radial-gradient(circle at top left, rgba(255, 107, 74, 0.12), transparent 32%),
+    linear-gradient(180deg, #f4f6fb 0%, #dfe7f2 100%);
+  letter-spacing: 0.01em;
+}
+
+h1, h2, .titulo-seccion {
+  font-family: "Fraunces", Georgia, serif;
+}
+
+.btn-primary {
+  --bs-btn-bg: #3d5a80;
+  --bs-btn-border-color: #3d5a80;
+  --bs-btn-hover-bg: #2b4466;
+  --bs-btn-hover-border-color: #2b4466;
+  --bs-btn-active-bg: #152238;
+  --bs-btn-active-border-color: #152238;
+  border-radius: 10px;
+  padding: 0.72rem 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 18px rgba(61, 90, 128, 0.28);
+}
+
+.btn-outline-light {
+  border-radius: 10px;
+  padding: 0.62rem 1.4rem;
+  font-weight: 600;
+}

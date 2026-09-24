@@ -1,0 +1,43 @@
+.seccion-productos {
+  background: linear-gradient(180deg, #e8eef6, #f4f6fb);
+  padding-block: 0.4rem;
+}
+
+.badge-seccion {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  color: #3d5a80;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.titulo-seccion {
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  color: #152238;
+}
+
+.card-producto {
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(21, 34, 56, 0.12);
+  background: #f8fafc;
+}
+
+.card-producto img {
+  height: 196px;
+  object-fit: cover;
+}
+
+.card-producto h3 {
+  color: #152238;
+  font-family: "Fraunces", Georgia, serif;
+}
+
+@media (min-width: 992px) {
+  .card-producto img {
+    height: 156px;
+  }
+}

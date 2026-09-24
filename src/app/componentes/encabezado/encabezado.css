@@ -1,0 +1,70 @@
+.header-clinica {
+  width: 100%;
+  position: relative;
+  color: #f4f7fb;
+  background:
+    linear-gradient(135deg, #101828 0%, #1c3358 48%, #3d5a80 100%);
+  overflow: hidden;
+  padding-block: 0.35rem;
+}
+
+.header-ornamento {
+  position: absolute;
+  inset: auto -60px -70px auto;
+  width: 240px;
+  height: 240px;
+  border: 12px solid rgba(255, 107, 74, 0.22);
+  border-radius: 28px;
+  transform: rotate(18deg);
+}
+
+.marca-clinica {
+  width: 76px;
+  height: 76px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, #ff8a6d, #ff6b4a);
+  color: #101828;
+  font-size: 1.85rem;
+  box-shadow: 0 14px 28px rgba(255, 107, 74, 0.32);
+  flex-shrink: 0;
+}
+
+.header-kicker {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: #ffb19d;
+  font-weight: 700;
+}
+
+.header-titulo {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  font-weight: 700;
+}
+
+.header-subtitulo {
+  color: rgba(244, 247, 251, 0.82);
+}
+
+.redes a {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  margin-left: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.redes a:hover {
+  background: #ff6b4a;
+  color: #101828;
+  border-color: #ff6b4a;
+}

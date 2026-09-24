@@ -1,0 +1,56 @@
+.seccion-registro {
+  background: #f8fafc;
+  padding-block: 0.4rem;
+}
+
+.badge-seccion {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  color: #3d5a80;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.titulo-seccion {
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  color: #152238;
+}
+
+.registro-intro {
+  max-width: 680px;
+  color: #4b5870;
+}
+
+.formulario-bootstrap {
+  max-width: 720px;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  border-top: 5px solid #ff6b4a;
+  box-shadow: 0 16px 34px rgba(21, 34, 56, 0.1);
+}
+
+.form-label,
+.form-check-label,
+legend.form-label {
+  font-weight: 700;
+  color: #152238;
+}
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+  border-color: #c9d4e4;
+  padding: 0.82rem 1rem;
+}
+
+.form-control:focus {
+  border-color: #3d5a80;
+  box-shadow: 0 0 0 0.22rem rgba(61, 90, 128, 0.2);
+}
+
+.invalid-feedback {
+  min-height: 18px;
+}

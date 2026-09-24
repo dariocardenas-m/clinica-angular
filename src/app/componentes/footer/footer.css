@@ -1,0 +1,32 @@
+.footer-clinica {
+  width: 100%;
+  color: #e8eef6;
+  background:
+    linear-gradient(165deg, #101828 0%, #152238 55%, #243b61 100%);
+  padding-top: 0.5rem;
+}
+
+.footer-marca {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.85rem;
+  color: #ff8a6d;
+}
+
+.redes-footer a {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  margin-right: 0.55rem;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.redes-footer a:hover {
+  background: #ff6b4a;
+  color: #101828;
+  border-color: #ff6b4a;
+}

@@ -1,0 +1,161 @@
+<section id="registro" class="seccion-registro py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <span class="badge-seccion">Sección 3</span>
+      <h2 class="titulo-seccion">Registro de nuevos usuarios</h2>
+      <p class="lead mx-auto registro-intro">
+        Cree su ficha de usuario. Usaremos el correo para enviarle el comprobante y recordatorios de cita.
+      </p>
+    </div>
+
+    <form class="mx-auto formulario-bootstrap card shadow-sm" novalidate (submit)="registrar($event)">
+      <div class="card-body p-4">
+        @if (mensajeErrorSubmit) {
+          <div class="alert alert-danger" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i>{{ mensajeErrorSubmit }}
+          </div>
+        }
+        @if (mensajeExito) {
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-check-circle-fill me-1"></i>{{ mensajeExito }}
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="nombresPaciente">Nombres</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombresPaciente"
+            name="nombresPaciente"
+            placeholder="Nombres"
+            [class.is-invalid]="!!errores.nombres"
+            [(ngModel)]="formulario.nombres"
+            (blur)="validarAlCambiarFoco('nombres')"
+          />
+          <div class="invalid-feedback d-block">{{ errores.nombres }}</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="apellidosPaciente">Apellidos</label>
+          <input
+            type="text"
+            class="form-control"
+            id="apellidosPaciente"
+            name="apellidosPaciente"
+            placeholder="Apellidos"
+            [class.is-invalid]="!!errores.apellidos"
+            [(ngModel)]="formulario.apellidos"
+            (blur)="validarAlCambiarFoco('apellidos')"
+          />
+          <div class="invalid-feedback d-block">{{ errores.apellidos }}</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="documentoPaciente">Documento de identidad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="documentoPaciente"
+            name="documentoPaciente"
+            placeholder="Solo números"
+            [class.is-invalid]="!!errores.documento"
+            [(ngModel)]="formulario.documento"
+            (blur)="validarAlCambiarFoco('documento')"
+          />
+          <div class="form-text">Entre 6 y 12 dígitos, sin puntos ni espacios.</div>
+          <div class="invalid-feedback d-block">{{ errores.documento }}</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="correoPaciente">Correo electrónico</label>
+          <input
+            type="email"
+            class="form-control"
+            id="correoPaciente"
+            name="correoPaciente"
+            placeholder="ejemplo@correo.com"
+            [class.is-invalid]="!!errores.correo"
+            [(ngModel)]="formulario.correo"
+            (blur)="validarAlCambiarFoco('correo')"
+          />
+          <div class="form-text">A este correo enviaremos el enlace de confirmación del registro.</div>
+          <div class="invalid-feedback d-block">{{ errores.correo }}</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="confirmarCorreoPaciente">Confirmar correo</label>
+          <input
+            type="email"
+            class="form-control"
+            id="confirmarCorreoPaciente"
+            name="confirmarCorreoPaciente"
+            placeholder="Repita el correo"
+            [class.is-invalid]="!!errores.confirmarCorreo"
+            [(ngModel)]="formulario.confirmarCorreo"
+            (blur)="validarAlCambiarFoco('confirmarCorreo')"
+          />
+          <div class="invalid-feedback d-block">{{ errores.confirmarCorreo }}</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="telefonoPaciente">Teléfono</label>
+          <input
+            type="text"
+            class="form-control"
+            id="telefonoPaciente"
+            name="telefonoPaciente"
+            placeholder="3001234567"
+            [class.is-invalid]="!!errores.telefono"
+            [(ngModel)]="formulario.telefono"
+            (blur)="validarAlCambiarFoco('telefono')"
+          />
+          <div class="invalid-feedback d-block">{{ errores.telefono }}</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="fechaNacimientoPaciente">Fecha de nacimiento</label>
+          <input
+            type="date"
+            class="form-control"
+            id="fechaNacimientoPaciente"
+            name="fechaNacimientoPaciente"
+            [class.is-invalid]="!!errores.fechaNacimiento"
+            [(ngModel)]="formulario.fechaNacimiento"
+            (blur)="validarAlCambiarFoco('fechaNacimiento')"
+          />
+          <div class="invalid-feedback d-block">{{ errores.fechaNacimiento }}</div>
+        </div>
+
+        <fieldset class="mb-3">
+          <legend class="form-label">Sexo</legend>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="sexoFemenino" name="sexoPaciente" value="Femenino" [(ngModel)]="formulario.sexo" (blur)="validarAlCambiarFoco('sexo')" />
+            <label class="form-check-label" for="sexoFemenino">Femenino</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="sexoMasculino" name="sexoPaciente" value="Masculino" [(ngModel)]="formulario.sexo" (blur)="validarAlCambiarFoco('sexo')" />
+            <label class="form-check-label" for="sexoMasculino">Masculino</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="sexoOtro" name="sexoPaciente" value="Otro" [(ngModel)]="formulario.sexo" (blur)="validarAlCambiarFoco('sexo')" />
+            <label class="form-check-label" for="sexoOtro">Otro</label>
+          </div>
+          <div class="invalid-feedback d-block">{{ errores.sexo }}</div>
+        </fieldset>
+
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="aceptaTerminos" name="aceptaTerminos" [(ngModel)]="formulario.aceptaTerminos" (blur)="validarAlCambiarFoco('aceptaTerminos')" />
+          <label class="form-check-label" for="aceptaTerminos">Acepto el tratamiento de datos y los términos de la clínica</label>
+          <div class="invalid-feedback d-block">{{ errores.aceptaTerminos }}</div>
+        </div>
+
+        <div class="d-grid d-sm-flex">
+          <button type="submit" class="btn btn-primary btn-lg" id="btnAgregarPaciente">
+            <i class="bi bi-person-plus-fill me-1"></i>Registrar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

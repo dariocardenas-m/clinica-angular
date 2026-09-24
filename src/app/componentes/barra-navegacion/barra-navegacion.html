@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md navbar-clinica sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#promociones">
+      <i class="bi bi-flower1 me-1"></i> Campus Salud
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="alternarMenu()"
+      [attr.aria-expanded]="menuAbierto"
+      aria-controls="menuPrincipal"
+      aria-label="Abrir menú"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [class.show]="menuAbierto" id="menuPrincipal">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#promociones" (click)="cerrarMenu()">Promociones</a></li>
+        <li class="nav-item"><a class="nav-link" href="#medicos" (click)="cerrarMenu()">Médicos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#registro" (click)="cerrarMenu()">Registro</a></li>
+        <li class="nav-item"><a class="nav-link" href="#productos" (click)="cerrarMenu()">Productos</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

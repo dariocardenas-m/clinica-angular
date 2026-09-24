@@ -1,0 +1,116 @@
+<section id="medicos" class="seccion-medicos">
+  <div class="container-fluid px-3 px-lg-4 py-5">
+    <div class="texto-seccion mb-4">
+      <span class="badge-seccion">Sección 2</span>
+      <h2 class="titulo-seccion mb-1">Directorio clínico</h2>
+      <p class="mb-0 text-muted">Filtre por área, revise el perfil y reserve con el profesional que más se ajuste a su caso.</p>
+    </div>
+
+    <div class="row g-4 layout-sidebar-medicos">
+      <!-- 3 escenarios sidebar + médicos: xs apilado, sm 4/8, md 3/9 -->
+      <aside class="col-12 col-sm-4 col-md-3">
+        <div class="panel-especialidades">
+          <h3 class="h6 mb-3">
+            <i class="bi bi-clipboard2-pulse me-1"></i>Especialidades
+          </h3>
+          <div class="list-group sidebar-especialidades">
+            <button
+              type="button"
+              class="list-group-item list-group-item-action"
+              [class.active]="especialidadActiva === 'Todos'"
+              (click)="mostrarTodosLosMedicos()"
+            >
+              <i class="bi bi-people me-2"></i>Todas las especialidades
+            </button>
+            @for (especialidad of especialidades; track especialidad.nombre) {
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                [class.active]="especialidad.nombre === especialidadActiva"
+                (click)="seleccionarEspecialidad(especialidad.nombre)"
+              >
+                <i class="bi bi-heart-pulse me-2"></i>{{ especialidad.nombre }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="panel-especialidades mt-3">
+          <h3 class="h6 mb-3">
+            <i class="bi bi-person-vcard me-1"></i>Todos los médicos
+          </h3>
+          <div class="list-group sidebar-especialidades lista-todos-medicos">
+            @for (medico of todosLosMedicos; track medico.id) {
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                [class.active]="medicoSeleccionadoSidebar === medico.id"
+                (click)="seleccionarMedicoDeLista(medico)"
+              >
+                <span class="d-block fw-semibold">
+                  <i class="bi bi-person-badge me-1"></i>{{ medico.nombres }} {{ medico.apellidos }}
+                </span>
+                <small class="especialidad-lista">{{ medico.especialidad }}</small>
+              </button>
+            }
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-12 col-sm-8 col-md-9">
+        @if (descripcionEspecialidad) {
+          <div class="descripcion-especialidad" role="status">
+            <h3>
+              <i class="bi bi-info-circle me-2"></i>{{ especialidadActiva }}
+            </h3>
+            <p class="mb-0">{{ descripcionEspecialidad }}</p>
+          </div>
+        }
+
+        <div class="row g-3 fila-medicos">
+          @if (medicos.length === 0) {
+            <p class="text-muted">No hay médicos para esta especialidad.</p>
+          }
+          @for (medico of medicos; track medico.id) {
+            <!-- 3 escenarios por fila: xs=1, sm=2, md=3 -->
+            <div class="col-12 col-sm-6 col-md-4" [class.medico-destacado]="medicoSeleccionadoSidebar === medico.id">
+              <article class="card h-100 card-medico">
+                <div class="card-img-wrap">
+                  <img [src]="medico.imagen" class="img-fluid card-img-top" [alt]="'Foto de ' + medico.nombres + ' ' + medico.apellidos" />
+                  <span class="chip-experiencia">
+                    <i class="bi bi-award-fill me-1"></i>{{ medico.aniosExperiencia }} años
+                  </span>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h3 class="nombre-medico">
+                    <i class="bi bi-person-badge me-1"></i>
+                    {{ medico.nombres }} {{ medico.apellidos }}
+                  </h3>
+                  <p class="dato-medico">
+                    <i class="bi bi-stars"></i>
+                    <strong>Subespecialidades:</strong> {{ medico.subespecialidades }}
+                  </p>
+                  <p class="frase-medico flex-grow-1">
+                    <i class="bi bi-quote"></i> {{ medico.motivacion }}
+                  </p>
+                  <p class="dato-medico mb-3">
+                    <i class="bi bi-clock"></i> {{ medico.horarioAtencion }}
+                  </p>
+                  <button type="button" class="btn btn-primary mt-auto" (click)="abrirCita(medico.id)">
+                    <i class="bi bi-calendar2-check me-1"></i>Agendar cita
+                  </button>
+                </div>
+              </article>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-modal-cita
+  [visible]="modalVisible"
+  [medicoId]="medicoSeleccionadoId"
+  (cerrar)="cerrarCita()"
+></app-modal-cita>

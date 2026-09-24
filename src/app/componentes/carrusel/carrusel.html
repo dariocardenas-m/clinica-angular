@@ -1,0 +1,39 @@
+<section id="promociones" class="carousel-contenedor">
+  <div class="container-fluid px-0">
+    <div class="carousel slide">
+      <div class="carousel-indicators">
+        @for (slide of slides; track slide.titulo; let i = $index) {
+          <button
+            type="button"
+            [class.active]="i === indice"
+            [attr.aria-current]="i === indice ? true : null"
+            (click)="irA(i)"
+            [attr.aria-label]="'Promoción ' + (i + 1)"
+          ></button>
+        }
+      </div>
+      <div class="carousel-inner">
+        @for (slide of slides; track slide.titulo; let i = $index) {
+          <div class="carousel-item" [class.active]="i === indice">
+            <div class="carousel-img-wrap">
+              <img [src]="slide.imagen" class="d-block w-100" [alt]="slide.alt" />
+            </div>
+            <div class="carousel-caption">
+              <span class="badge-promo">Sección 1 · Promoción</span>
+              <h2>{{ slide.titulo }}</h2>
+              <p>{{ slide.texto }}</p>
+            </div>
+          </div>
+        }
+      </div>
+      <button class="carousel-control-prev" type="button" (click)="anterior()">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" (click)="siguiente()">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </div>
+</section>

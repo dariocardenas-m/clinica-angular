@@ -1,0 +1,22 @@
+<section id="productos" class="seccion-productos py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <span class="badge-seccion">Tienda</span>
+      <h2 class="titulo-seccion">Botiquín y apoyo en casa</h2>
+      <p class="lead text-muted">Artículos sugeridos por el equipo para continuar el tratamiento entre consultas.</p>
+    </div>
+    <div class="row g-3">
+      @for (producto of productos; track producto.titulo) {
+        <div class="col-12 col-sm-6 col-lg-2">
+          <article class="card h-100 card-producto">
+            <img [src]="producto.imagen" class="img-fluid card-img-top" [alt]="producto.alt" />
+            <div class="card-body">
+              <h3 class="h6">{{ producto.titulo }}</h3>
+              <p class="small mb-0">{{ producto.texto }}</p>
+            </div>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+</section>
